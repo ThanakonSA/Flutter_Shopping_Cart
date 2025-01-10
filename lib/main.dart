@@ -33,9 +33,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Item> items = <Item>[
-    Item(name: 'iPhone 15', price: 17000),
-    Item(name: 'MacBook Pro', price: 28000),
-    Item(name: 'iPad Pro', price: 10000),
+    Item(name: 'iPhone 15', price: 17000, imageUrl: 'https://mac-center.com/cdn/shop/files/IMG-10942145_9f7ece93-39fc-4310-a98d-9c11efa3a51e.jpg?v=1723752783&width=823',),
+    Item(name: 'MacBook Pro', price: 28000, imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJxn519dwNYI1EnCcOy0tMkns20f7tO1CW4Q&s',),
+    Item(name: 'iPad Pro', price: 10000, imageUrl: 'https://i5.walmartimages.com/seo/2021-Apple-11-inch-iPad-Pro-Wi-Fi-512GB-Silver-3rd-Generation_e304a776-3ea7-47de-b001-093c9bf8f4ca.32175697226f4a5841a67d25c04aded3.jpeg',),
   ];
 
   int total = 0;

@@ -36,54 +36,68 @@ class _CartItemState extends State<CartItem> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.items.name,
-              style: Theme.of(context).textTheme.headlineMedium,
+Widget build(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+      Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network(
+              widget.items.imageUrl,
+              width: 150,
+              height: 150,
+              fit: BoxFit.cover,
             ),
-            Text(
-              'Price: ${widget.items.price} ฿',
-              style: Theme.of(context).textTheme.labelSmall,
-            ),
-          ],
-        ),
-        Row(
-          children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.remove),
-              onPressed: () {
-                if (quantity > 0) {
-                  setState(() {
-                    quantity--;
-                  });
-                  widget.items.amount = quantity; // อัปเดตจำนวนใน items
-                  widget.onQuantityChanged(-widget.items.price.toInt());
-                }
-              },
-            ),
-            Text(
-              '$quantity',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () {
+          ),
+          const SizedBox(width: 16),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.items.name,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              Text(
+                'Price: ${widget.items.price} ฿',
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
+            ],
+          ),
+        ],
+      ),
+      Row(
+        children: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.remove),
+            onPressed: () {
+              if (quantity > 0) {
                 setState(() {
-                  quantity++;
+                  quantity--;
                 });
                 widget.items.amount = quantity; // อัปเดตจำนวนใน items
-                widget.onQuantityChanged(widget.items.price.toInt());
-              },
-            ),
-          ],
-        ),
-      ],
-    );
-  }
+                widget.onQuantityChanged(-widget.items.price.toInt());
+              }
+            },
+          ),
+          Text(
+            '$quantity',
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              setState(() {
+                quantity++;
+              });
+              widget.items.amount = quantity; // อัปเดตจำนวนใน items
+              widget.onQuantityChanged(widget.items.price.toInt());
+            },
+          ),
+        ],
+      ),
+    ],
+  );
+}
 }
